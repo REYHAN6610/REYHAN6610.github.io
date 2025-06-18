@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYPASS TOKEN SHOPEE</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #0f0;
+            overflow: hidden;
+            background-image: url('https://files.catbox.moe/b7amfa.gif');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hacker-box {
+            width: 80%;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #0f0;
+            border-radius: 5px;
+            box-shadow: 0 0 20px #0f0, 
+                        inset 0 0 10px #0f0;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .title {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px #0f0;
+            position: relative;
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 0 0 5px #0f0; }
+            25% { text-shadow: -3px 0 5px #f00, 3px 0 5px #00f; }
+            50% { text-shadow: 0 0 5px #0f0; }
+            75% { text-shadow: 3px 0 5px #f00, -3px 0 5px #00f; }
+            100% { text-shadow: 0 0 5px #0f0; }
+        }
+
+        /* INPUT STYLE */
+        .token-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #111;
+            border: 1px solid #0f0;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            outline: none;
+            box-shadow: 0 0 5px #0f0;
+        }
+
+        /* BUTTON STYLE */
+        .verify-btn {
+            width: 100%;
+            padding: 10px;
+            background: #0f0;
+            color: #000;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .verify-btn:hover {
+            background: #000;
+            color: #0f0;
+            box-shadow: 0 0 10px #0f0;
+        }
+
+        /* TERMINAL TEXT EFFECT */
+        .typing-effect {
+            border-right: 2px solid #0f0;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: #0f0; }
+        }
+
+        /* SCAN LINES (CRT EFFECT) */
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                rgba(0, 255, 0, 0.05) 1px,
+                transparent 1px
+            );
+            background-size: 100% 2px;
+            pointer-events: none;
+            animation: scanline 10s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* STATUS MESSAGE */
+        .status {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #0f0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="hacker-box">
+        <div class="scanlines"></div>
+        <h1 class="title">SHOPEE BYPASS TOKEN</h1>
+        <p style="color: #0f0;">Enter your token below:</p>
+        <input 
+            type="text" 
+            class="token-input" 
+            id="tokenInput" 
+            placeholder="Paste token here..." 
+            autocomplete="off"
+        >
+        <button class="verify-btn" onclick="verifyToken()">VERIFY TOKEN</button>
+        <p class="status" id="status">Waiting for token...</p>
+    </div>
+
+    <script>
+        function verifyToken() {
+            const token = document.getElementById("tokenInput").value.trim();
+            const status = document.getElementById("status");
+
+            if (!token) {
+                status.textContent = "❌ Token cannot be empty!";
+                status.style.color = "#f00";
+                return;
+            }
+
+            // Simulate "hacking" effect
+            status.textContent = "⌛ Verifying token...";
+            status.style.color = "#0f0";
+
+            setTimeout(() => {
+                // Generate the final URL
+                const finalUrl = `https://shopee.co.id/verify/ivs?client_id=1&event_type=0&is_initial=false&ivs_flow_no=&trigger_url=https%3A%2F%2Fshopee.co.id%2Fauthenticate%2Fwhatsapp%3Ftoken%token=${token}`;
+                
+                // Show success message
+                status.innerHTML = `✅ Token verified!<br>Redirecting...`;
+                
+                // Redirect after 2 seconds
+                setTimeout(() => {
+                    window.location.href = finalUrl;
+                }, 2000);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
